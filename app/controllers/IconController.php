@@ -35,14 +35,17 @@ class IconController extends BaseController {
             $icon->image = $this->createIcon();
             $icon->category_id = $category_id;
             $icon->save();
-            return Redirect::action('IconController@index');
+            return Redirect::action('IconController@index', array($category_id));
         }
     }
     
     protected function createIcon() {
-        $iconWidth = Input::get('x2') - Input::get('x1');
-        $iconHeight = Input::get('y2') - Input::get('y1');
-        return Image::make(Input::file('image')->getRealPath())->crop($iconWidth, $iconHeight, Input::get('x1'), Input::get('y1'))->resize(50, 50)->encode('data-url');
+        $ratio = Input::get('ratio');
+        $iconWidth = (Input::get('x2') - Input::get('x1')) / $ratio;
+        $iconHeight = (Input::get('y2') - Input::get('y1')) / $ratio;
+        $x1 = Input::get('x1') / $ratio;
+        $y1 = Input::get('y1') / $ratio;
+        return Image::make(Input::file('image')->getRealPath())->crop($iconWidth, $iconHeight, $x1, $y1)->resize(50, 50)->encode('data-url');
     }
     
     public function image($category_id, $icon_id) {

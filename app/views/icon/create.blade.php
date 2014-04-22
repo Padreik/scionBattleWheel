@@ -36,6 +36,7 @@
             {{ BootForm::hidden('y1') }}
             {{ BootForm::hidden('x2') }}
             {{ BootForm::hidden('y2') }}
+            {{ BootForm::hidden('ratio') }}
         </div>
         {{ BootForm::submit(Lang::get('icon.store')) }}
     {{ BootForm::close() }}

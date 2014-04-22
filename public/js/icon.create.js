@@ -46,7 +46,12 @@ imagePreview.imgAreaSelect({
         $('input[name="x1"]').val(selection.x1);
         $('input[name="y1"]').val(selection.y1);
         $('input[name="x2"]').val(selection.x2);
-        $('input[name="y2"]').val(selection.y2);            
+        $('input[name="y2"]').val(selection.y2);
+        // Calculate ratio for original image size and displayed image size
+        var originalImage = new Image();
+        originalImage.src = imagePreview.attr("src");
+        var ratio = imagePreview.width() / originalImage.width;
+        $('input[name="ratio"]').val(ratio);
     },
     onSelectChange: preview
 });
