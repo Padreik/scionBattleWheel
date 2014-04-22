@@ -1,0 +1,232 @@
+	/* styles to force panels to slide horizontally */
+	.SlidingPanels {
+		float: left;
+		height: 450px;
+	}
+	.SlidingPanelsContentGroup {
+		float: left;
+		width: 10000px;
+		height: 450px;
+	}
+	.SlidingPanelsContent {
+		float: left;
+		width: 300px;
+		height: 450px;
+ 	}
+
+	body {
+		background-color: gray;
+	}
+	
+	h2 {
+		text-align: center;
+		margin-bottom: 1px;
+	}
+
+  .iconImg {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 50px;
+    width: 50px;
+  	margin: 0px;
+  	padding: 0px;
+  	display: inline; /* make none for text and handled display */
+  }
+  
+  .counterText .iconImg, .counterLargeText .iconImg, .counterHandled .iconImg {
+  	display: none;
+  }
+  
+  .iconInput {
+    position: absolute;
+    top:  50px;
+    left: 0px;
+    width: 50px;
+  	margin: 0px;
+  	padding: 0px;
+  	display: inline;
+  	text-align: center;
+  	font-size: 0.7em;
+  	border: 0px;
+  	background-color: #ffe03d;
+  }
+  
+  .iconText, .iconLargeText {
+	background-color: white; 
+    position: absolute;
+    top:  8px;
+    left: 0px;
+    height: 42px;
+    width: 50px;
+  	margin: 0px;
+  	padding: 0px;
+  	font-size: 0.7em;
+  	border: 0px;
+  	overflow: auto;
+  	display: none; /* make none for image and handled display */
+   }
+   
+   .counterLargeText .iconText {
+    height: 62px;
+    width: 70px;
+   }
+  
+  .counterPic, .counterText, .counterHandled, .counterLargeText {
+  	position: relative;
+    font-family: Arial, sans-serif;
+    border: 2px solid #aaa;
+  	width: 50px;
+  	height: 63px; /* make 22px for handled display, 63px for others */
+    float: left;
+    padding: 0px;
+    margin: 5px;
+  	background-color: gray; 
+    z-index: 1;
+  	cursor: pointer;
+  }
+  
+  .counterLargeText {
+  	width: 70px;
+  	height: 83px; /* make 22px for handled display, 63px for others */
+  }  	
+  
+  .counterHandled { /* counter with only handle showing */
+  	height: 22px;
+  }
+  
+  .counterText .iconText, .counterLargeText .iconText {
+  	display: inline;
+  }
+  
+  .counterLargeText .iconInput {
+    top:  70px;
+    width: 70px;
+	}
+  
+  .counterHandled .iconInput {
+    top:  9px;
+	}
+	
+  .handle {
+  	position: absolute;
+  	left: 0px;
+  	top: 0px;
+  	width: 50px;
+  	height: 8px;
+  	padding: 0px;
+  	margin: 0px;
+  	display: none; /* make inline for text and imageless display */
+  	background-color: gray;
+  }
+  
+  .counterHandled .handle {
+  	display: inline;
+  }
+
+  .redX {
+	position: absolute;
+    top: 0px;
+    left: 43px;
+    height: 8px;
+    width: 8px;
+    cursor: pointer;
+  }
+  
+  .locked, .unlocked {
+	position: absolute;
+    top: 0px;
+    left: 35px;
+    height: 8px;
+    width: 8px;
+    cursor: pointer;
+  }
+  
+  .counterLargeText .locked, .counterLargeText .unlocked {
+    left: 55px;
+  }
+
+  .counterLargeText .redX {
+    left: 63px;
+  }
+  
+  #wheel {
+  	float: left;
+  	width: 660px;
+  	height: 660px;  
+  }
+  
+  #boxVerticalOnly, #boxHorizontalOnly, #boxRegionConstraint, 
+  #boxThreshold, #boxAbsolute, #boxHandle, #boxAbsolute {
+    display: none; /* do not show these */
+    cursor: move;
+  }
+  
+  .controls {
+  	clear: both;
+  	width: 660px;
+  	text-align: center;
+  }
+  
+  #defaultTextDiv {
+    width: 660px;
+  }
+  
+  #defaultTextLabel {
+  	font-weight: bold;
+  	text-align: center;
+  }   
+  
+  #defaultTextArea {
+	background-color: white; 
+    height: 42px;
+    width: 50px;
+  	margin: 0px;
+  	padding: 0px;
+  	font-size: 0.7em;
+  	border: 0px;
+  	overflow: auto;
+  }
+  
+  #hideBut {
+  	display: inline;
+  }
+  
+  #showBut, #retBut {
+  	display: none;
+  }
+  
+  button {
+  	width: 90px;
+  	margin: 12px;
+  }
+  
+  .props {
+  	font-size: 0.8em;
+  	width: 660px;
+  	text-align: center;
+  	color: gold;
+  }
+
+  #gallery, #instructions, #galleryNav {
+  	float: left;
+    width: 300px;
+  	display: inline;
+  	margin-left: 5px;
+	}
+  
+  #gallery {
+  	height: 450px;
+  	border: 3px solid black;
+  }
+  
+  #instructions {
+  	height: 110px;
+  }
+  
+  #galleryNav {
+  	height: 1.5em;
+  	text-align: center;
+  	border: 3px solid black;
+  	border-top: 0px;  	
+  }
