@@ -88,4 +88,10 @@ class IconController extends BaseController {
             return Redirect::action('IconController@index', array($category_id));
         }
     }
+    
+    public function delete($category_id, $icon_id) {
+        $icon = Icon::find($icon_id);
+        $icon->delete();
+        return Redirect::action('IconController@index', array($category_id))->with('deleted', '1');;
+    }
 }

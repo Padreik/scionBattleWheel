@@ -16,11 +16,11 @@
     padding: 10px;
 }
 
-.list-group .delete-icon-link {
+.delete-icon-link {
     color: #d9534f; /* Color brand-danger from bootstrap */
 }
 
-.list-group .delete-icon-link:hover {
+.list-group .delete-icon-link:hover, .admin-icon-holder .delete-icon-link .glyphicon-remove-sign:hover {
     background-color: #d9534f;
     color: #FFF;
 }
@@ -32,4 +32,20 @@
 .list-group .edit-icon-link:hover {
     background-color: #428bca;
     color: #FFF;
+}
+
+.admin-icon-holder .delete-icon-link {
+    float: right;
+    position: relative;
+    top: -74px;
+    left: -2px;
+}
+
+.admin-icon-holder .delete-icon-link .glyphicon-remove-sign {
+    background-color: #FFF;
+}
+
+.admin-icon-holder {
+    float: left;
+    margin: 0 5px 5px 5px;
 }

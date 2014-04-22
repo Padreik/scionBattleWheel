@@ -13,5 +13,7 @@ return array(
         'create' => array(
             'select' => 'Please select the icon'
         )
-    )
+    ),
+    'delete.confirmation' => 'Are you sure to delete this icon? This cann\'t be undone.',
+    'deleted' => 'The icon has been deleted',
 );

@@ -40,6 +40,7 @@
             form = laravel.createForm(link);
             form.submit();
 
+            e.stopPropagation();
             e.preventDefault();
         },
         verifyConfirm: function(link) {

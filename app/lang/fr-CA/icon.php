@@ -13,5 +13,7 @@ return array(
         'create' => array(
             'select' => 'Veuillez sélectionner l\'icône'
         )
-    )
+    ),
+    'delete.confirmation' => 'Êtes vous sur de vouloir supprimer cette icône? Cette action est irréversible.',
+    'deleted' => 'L\'icône a bien été supprimée',
 );
