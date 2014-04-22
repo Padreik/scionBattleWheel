@@ -47,7 +47,7 @@
             <div id="gallery">
                 <div style="overflow: hidden;" id="panels" class="SlidingPanels">
                     <div style="left: 0px; top: 0px;" class="SlidingPanelsContentGroup">
-                        @foreach ($user->categories->sortBy('name') as $category)
+                        @foreach ($user->categories as $category)
                             <div id="{{ $category->name }}" class="SlidingPanelsContent SlidingPanelsCurrentPanel">
                                 <h2>{{ $category->name }}</h2>
                                 <?php $count = 0; ?>
@@ -79,7 +79,7 @@
                     <a href="#" onclick="sp1.showFirstPanel(); return false;">&lt;&lt;</a> | 
                     <a href="#" onclick="sp1.showPreviousPanel(); return false;">&lt;</a> | 
                     <select name="gallerySelect" onchange="sp1.showPanel(this.value);">
-                        @foreach ($user->categories->sortBy('name') as $category)
+                        @foreach ($user->categories as $category)
                             <option value="{{ $category->name }}">{{ $category->name }}</option>
                         @endforeach
                     </select>

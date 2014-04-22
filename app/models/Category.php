@@ -6,6 +6,6 @@ class Category extends Eloquent {
     }
     
     public function icons() {
-        return $this->hasMany('Icon');
+        return $this->hasMany('Icon')->orderBy('name');
     }
 }
