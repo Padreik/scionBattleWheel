@@ -88,7 +88,8 @@ Route::group(
                     function() {
                         // category
                         Route::get( LaravelLocalization::transRoute('routes.category.edit'), 'CategoryController@edit');
-                        Route::put( LaravelLocalization::transRoute('routes.category.update'), 'CategoryController@update');
+                        Route::put( LaravelLocalization::transRoute('routes.category.update'), array('before' => 'csrf', 'uses' => 'CategoryController@update'));
+                        Route::delete( LaravelLocalization::transRoute('routes.category.delete'), array('before' => 'csrf', 'uses' => 'CategoryController@delete'));
                     
                         // icons
                         Route::get( LaravelLocalization::transRoute('routes.icon.index'), 'IconController@index');

@@ -55,4 +55,11 @@ class CategoryController extends BaseController {
             return Redirect::action('CategoryController@index');
         }
     }
+    
+    public function delete($category_id) {
+        $category = Category::find($category_id);
+        $category->icons()->delete();
+        $category->delete();
+        return Redirect::action('CategoryController@index')->with('deleted', '1');;
+    }
 }
