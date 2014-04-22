@@ -67,5 +67,6 @@
                 <p class='text-muted'>@lang('layout.footer')</p>
             </div>
         </div>
+        {{ HTML::script('js/layout.js') }}
     </body>
 </html>

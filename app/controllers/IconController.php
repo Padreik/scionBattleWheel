@@ -60,4 +60,32 @@ class IconController extends BaseController {
             return $response;
         }
     }
+    
+    public function edit($category_id, $icon_id) {
+        $icon = Icon::find($icon_id);
+        return View::make('icon.edit')->with('icon', $icon);
+    }
+    
+    public function update($category_id, $icon_id) {
+        $validationRules = array(
+            'name' => 'required',
+            'image' => 'image',
+            'x1' => 'numeric'
+        );
+        
+        $validator = Validator::make(Input::all(), $validationRules);
+        if ($validator->fails()) {
+            Input::flashOnly('name');
+            return Redirect::action('IconController@edit', array($category_id, $icon_id))->withErrors($validator);
+        }
+        else {
+            $icon = Icon::find($icon_id);
+            $icon->name = Input::get('name');
+            if (Input::get('x1')) {
+                $icon->image = $this->createIcon();
+            }
+            $icon->save();
+            return Redirect::action('IconController@index', array($category_id));
+        }
+    }
 }

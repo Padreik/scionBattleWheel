@@ -24,3 +24,7 @@
 .iconAndTextHolder {
     visibility: hidden;
 }
+
+.admin-icon-holder {
+    cursor: pointer;
+}

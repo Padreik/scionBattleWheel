@@ -25,6 +25,9 @@ return array(
         'index' => 'categorie/{category_id}/icone',
         'create' => 'categorie/{category_id}/icone/creer',
         'store' => 'categorie/{category_id}/icone',
-        'image' => 'categorie/{category_id}/icone/{icone_id}/image',
+        'image' => 'categorie/{category_id}/icone/{icon_id}/image',
+        'edit' => 'categorie/{category_id}/icone/{icon_id}/modifier',
+        'update' => 'categorie/{category_id}/icone/{icon_id}',
+        'delete' => 'categorie/{category_id}/icone/{icon_id}',
     ),
 );

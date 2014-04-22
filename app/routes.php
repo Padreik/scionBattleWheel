@@ -31,6 +31,16 @@ Route::filter('hasAccessToCategory', function($route) {
     }
 });
 
+Route::filter('iconIsInCategory', function($route) {
+    $categoryId = $route->getParameter('category_id');
+    $iconId = $route->getParameter('icon_id');
+    $icon = Icon::find($categoryId);
+    
+    if (!is_object($icon) || $icon->category_id != $categoryId) {
+        return Redirect::action('IconController@index', array($categoryId));
+    }
+});
+
 /*******************************************************************************
  * Routes pour vrai
  ******************************************************************************/
@@ -95,6 +105,19 @@ Route::group(
                         Route::get( LaravelLocalization::transRoute('routes.icon.index'), 'IconController@index');
                         Route::get( LaravelLocalization::transRoute('routes.icon.create'), 'IconController@create');
                         Route::post( LaravelLocalization::transRoute('routes.icon.store'), array('before' => 'csrf', 'uses' => 'IconController@store'));
+                        
+                        // Routes qui contiennent un category_id et un icon_id
+                        Route::group(
+                            array(
+                                'before' => 'iconIsInCategory'
+                            ),
+                            function() {
+                                // icon
+                                Route::get( LaravelLocalization::transRoute('routes.icon.edit'), 'IconController@edit');
+                                Route::put( LaravelLocalization::transRoute('routes.icon.update'), array('before' => 'csrf', 'uses' => 'IconController@update'));
+                                Route::delete( LaravelLocalization::transRoute('routes.icon.delete'), array('before' => 'csrf', 'uses' => 'IconController@delete'));
+                            }
+                        );
                     }
                 );
             }

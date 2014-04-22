@@ -11,7 +11,7 @@
 @section('content')
     <div class="row">
         @foreach ($icons as $icon)
-            <div class='col-md-1'>
+            <div class='col-md-1 admin-icon-holder' data-url="{{ URL::action('IconController@edit', array($icon->category_id, $icon->id)) }}">
                 <div class='iconHolder'>
                     <img class='iconPreview' src='{{ URL::action('IconController@image', array($icon->category_id, $icon->id)) }}' />
                 </div>

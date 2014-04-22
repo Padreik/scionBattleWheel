@@ -26,5 +26,8 @@ return array(
         'create' => 'category/{category_id}/icon/create',
         'store' => 'category/{category_id}/icon',
         'image' => 'category/{category_id}/icon/{icone_id}/image',
+        'edit' => 'category/{category_id}/icon/{icone_id}/edit',
+        'update' => 'category/{category_id}/icon/{icone_id}',
+        'delete' => 'category/{category_id}/icon/{icone_id}',
     ),
 );
