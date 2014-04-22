@@ -86,6 +86,10 @@ Route::group(
                         'before' => 'hasAccessToCategory'
                     ),
                     function() {
+                        // category
+                        Route::get( LaravelLocalization::transRoute('routes.category.edit'), 'CategoryController@edit');
+                        Route::put( LaravelLocalization::transRoute('routes.category.update'), 'CategoryController@update');
+                    
                         // icons
                         Route::get( LaravelLocalization::transRoute('routes.icon.index'), 'IconController@index');
                         Route::get( LaravelLocalization::transRoute('routes.icon.create'), 'IconController@create');

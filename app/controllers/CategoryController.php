@@ -32,4 +32,27 @@ class CategoryController extends BaseController {
             return Redirect::action('CategoryController@index');
         }
     }
+    
+    public function edit($category_id) {
+        $category = Category::find($category_id);
+        return View::make('category.edit')->with('category', $category)->with('category_id', $category_id);
+    }
+    
+    public function update($category_id) {
+        $validationRules = array(
+            'name' => 'required',
+        );
+        
+        $validator = Validator::make(Input::all(), $validationRules);
+        if ($validator->fails()) {
+            Input::flash();
+            return Redirect::action('CategoryController@edit', array($category_id))->withErrors($validator);
+        }
+        else {
+            $category = Category::find($category_id);
+            $category->name = Input::get('name');
+            $category->save();
+            return Redirect::action('CategoryController@index');
+        }
+    }
 }

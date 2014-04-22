@@ -11,7 +11,7 @@
                 {{ $category->name }}
             </a>
             <a href="/" class="delete-icon-link"><span class="glyphicon glyphicon-remove-sign"></span></a>
-            <a href="/" class="edit-icon-link"><span class="glyphicon glyphicon-pencil"></span></a>
+            <a href="{{ URL::action('CategoryController@edit', array('id' => $category->id)) }}" class="edit-icon-link"><span class="glyphicon glyphicon-pencil"></span></a>
         @endforeach
     </div>
     <br />

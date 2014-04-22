@@ -8,4 +8,5 @@ return array(
     ),
     'name' => 'Name',
     'store' => 'Create',
+    'update' => 'Update',
 );

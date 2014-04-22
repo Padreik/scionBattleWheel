@@ -16,6 +16,8 @@ return array(
         'index' => 'category',
         'create' => 'category/create',
         'store' => 'category',
+        'edit' => 'category/{category_id}/edit',
+        'update' => 'category/{category_id}',
     ),
     
     'icon' => array(
