@@ -7,7 +7,11 @@
 @section('content')
     <div class="list-group">
         @foreach ($categories as $category)
-            {{ HTML::linkAction('IconController@index', $category->name, array('id' => $category->id), array('class' => 'list-group-item')) }}
+            <a href="{{ URL::action('IconController@index', array('id' => $category->id)) }}" class="list-group-item">
+                {{ $category->name }}
+            </a>
+            <a href="/" class="delete-icon-link"><span class="glyphicon glyphicon-remove-sign"></span></a>
+            <a href="/" class="edit-icon-link"><span class="glyphicon glyphicon-pencil"></span></a>
         @endforeach
     </div>
     <br />

@@ -1,3 +1,35 @@
+/******************************************************************
+ * Footer
+ ******************************************************************/
 #footer .container .text-muted a {
     color: #555555;
+}
+
+/******************************************************************
+ * List group with edit and delete icons
+ ******************************************************************/
+.list-group .delete-icon-link, .list-group .edit-icon-link {
+    float: right;
+    position: relative;
+    display: block;
+    top: -39px;
+    padding: 10px;
+}
+
+.list-group .delete-icon-link {
+    color: #d9534f; /* Color brand-danger from bootstrap */
+}
+
+.list-group .delete-icon-link:hover {
+    background-color: #d9534f;
+    color: #FFF;
+}
+
+.list-group .edit-icon-link {
+    color: #428bca; /* Color brand-primary from bootstrap */
+}
+
+.list-group .edit-icon-link:hover {
+    background-color: #428bca;
+    color: #FFF;
 }
