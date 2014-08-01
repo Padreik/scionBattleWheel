@@ -1,0 +1,93 @@
+#wheel {
+    text-align: center;
+}
+
+#wheel .selector {
+    display: none;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#wheel .selector select, #gallery #categories select {
+    display: inline;
+    width: inherit;
+}
+
+#gallery {
+    text-align: center;
+}
+
+#gallery {
+    padding-right: 5px;
+}
+
+#gallery #categories a {
+    color: #000;
+    font-weight: bold;
+}
+
+#gallery #icons h2 {
+    margin-top: 0;
+}
+
+#gallery #icons .category-icons {
+    width: 100%;
+}
+
+#gallery #icons .icon {
+    float: left;
+    margin-right: 3px;
+}
+
+#gallery #icons .icon img.close {
+    display: none;
+}
+
+#gallery #icons .icon input {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.icon {
+    border: #000 solid 1px;
+    font-size: 0.8em;
+    line-height: 0.8em;
+    position: relative;
+    width: 50px;
+}
+
+.icon img.image {
+    width: 100%;
+}
+
+.icon input {
+    border: none;
+    overflow: hidden;
+    padding: 0 1px 0 1px;
+    text-align: center;
+    width: 100%;
+}
+
+.icon img.close {
+    opacity: 0.5;
+    position: absolute;
+    right: 0;
+}
+
+.icon img.close:hover {
+    opacity: 0.8;
+}
+
+/***************************************************************
+ ** Cloning icons
+ **************************************************************/
+
+#floatingIcons .icon {
+    cursor: move;
+    opacity: 1;
+    position: absolute;
+    z-index: 100001;
+}
