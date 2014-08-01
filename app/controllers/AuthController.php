@@ -20,9 +20,10 @@ class AuthController extends BaseController {
         else {
             $credentials = array(
                 'email' => Input::get('email'),
-                'password' => Input::get('password')
+                'password' => Input::get('password'),
+                'confirmed' => '1'
             );
-            if (Auth::attempt($credentials)) {
+            if (Auth::attempt($credentials, true)) {
                 return Redirect::to('/');
             }
             else {

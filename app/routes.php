@@ -70,6 +70,9 @@ Route::group(
                 // auth
                 Route::get( LaravelLocalization::transRoute('routes.auth.login'), 'AuthController@login');
                 Route::post(LaravelLocalization::transRoute('routes.auth.login'), 'AuthController@connect');
+                
+                // Reminder
+                Route::controller('password', 'RemindersController');
             }
         );
         
