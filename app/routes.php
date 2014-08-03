@@ -18,7 +18,7 @@ Route::filter('hasAccessToCategory', function($route) {
     $redirect = true;
     
     if (is_object($category) && Auth::check()) {
-        $user = $category->user;
+        $user = $category->battlewheel->user;
         if (is_object($user)) {
             if ($user->id == Auth::getUser()->id) {
                 $redirect = false;
@@ -51,7 +51,7 @@ Route::group(
     ),
     function() {
         if (Auth::check()) {
-            Route::get('/', 'BattleWheelController@show');
+            Route::get('/', 'BattleWheelController@displayDefault');
         } else {
             Route::get('/', 'AuthController@login');
         }
@@ -86,7 +86,8 @@ Route::group(
                 Route::get( LaravelLocalization::transRoute('routes.auth.logout'), 'AuthController@logout');
                 
                 // battleWheel
-                Route::get( LaravelLocalization::transRoute('routes.battleWheel.show'), 'BattleWheelController@show');
+                Route::resource(LaravelLocalization::transRoute('routes.battleWheel.show'), 'BattleWheelController');
+                Route::get( 'bw', 'BattleWheelController@showtmp');
                 
                 // category
                 Route::get( LaravelLocalization::transRoute('routes.category.index'), 'CategoryController@index');

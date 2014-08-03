@@ -33,10 +33,7 @@
                     <ul class="nav navbar-nav">
                         @if (Auth::check())
                             <li>
-                                {{ HTML::linkAction('BattleWheelController@show', Lang::get('layout.battlewheel')) }}
-                            </li>
-                            <li>
-                                {{ HTML::linkAction('CategoryController@index', Lang::get('layout.admin')) }}
+                                {{ HTML::linkAction('BattleWheelController@index', Lang::get('layout.admin')) }}
                             </li>
                             <li>
                                 {{ HTML::linkAction('AuthController@logout', Lang::get('layout.logout')) }}
