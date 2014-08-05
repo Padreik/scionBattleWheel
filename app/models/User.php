@@ -59,7 +59,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
     }
     
     public function battlewheels() {
-        return $this->hasMany('Battlewheel')->orderBy('name');
+        return $this->hasMany('BattleWheel')->orderBy('name');
     }
 
 }

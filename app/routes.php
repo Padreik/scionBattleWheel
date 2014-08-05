@@ -34,7 +34,7 @@ Route::filter('hasAccessToCategory', function($route) {
 Route::filter('iconIsInCategory', function($route) {
     $categoryId = $route->getParameter('category_id');
     $iconId = $route->getParameter('icon_id');
-    $icon = Icon::find($categoryId);
+    $icon = Icon::find($iconId);
     
     if (!is_object($icon) || $icon->category_id != $categoryId) {
         return Redirect::action('IconController@index', array($categoryId));
@@ -63,8 +63,8 @@ Route::group(
             ),
             function() {
                 // user
-                Route::post(LaravelLocalization::transRoute('routes.user'), array('before' => 'csrf', 'uses' => 'UserController@store'));
                 Route::get( LaravelLocalization::transRoute('routes.user.create'), 'UserController@create');
+                Route::post(LaravelLocalization::transRoute('routes.user'), array('before' => 'csrf', 'uses' => 'UserController@store'));
                 Route::get( LaravelLocalization::transRoute('routes.auth.confirmation').'/{key}', 'AuthController@confirmation');
                 
                 // auth
@@ -82,11 +82,28 @@ Route::group(
                 'before' => 'authentificated'
             ),
             function() {
+                Route::group(
+                    array(
+                        'prefix' => 'admin',
+                    ),
+                    function() {
+                        // battleWheel
+                        Route::group(
+                            array(
+                                'before' => 'hasAccessInAdmin:BattleWheel',
+                            ),
+                            function() {
+                                \pgirardnet\Scion\RoutesHelpers::translatedResource('battleWheel');
+                            }
+                        );
+                        //Route::resource(LaravelLocalization::transRoute('routes.battleWheel.show'), 'BattleWheelController');
+                    }
+                );
+            
                 // auth
                 Route::get( LaravelLocalization::transRoute('routes.auth.logout'), 'AuthController@logout');
                 
                 // battleWheel
-                Route::resource(LaravelLocalization::transRoute('routes.battleWheel.show'), 'BattleWheelController');
                 Route::get( 'bw', 'BattleWheelController@showtmp');
                 
                 // category

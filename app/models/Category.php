@@ -2,7 +2,7 @@
 
 class Category extends Eloquent {
     public function battlewheel() {
-        return $this->belongsTo('Battlewheel');
+        return $this->belongsTo('BattleWheel');
     }
     
     public function icons() {

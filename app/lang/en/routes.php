@@ -9,7 +9,13 @@ return array(
     'auth.login' => 'authentification/login',
     
     'battleWheel' => array(
-        'show' => 'battlewheel'
+        'index' => 'battlewheel',
+        'create' => 'battlewheel/create',
+        'store' => 'battlewheel',
+        'show' => 'battlewheel/{id}',
+        'edit' => 'battlewheel/{id}/edit',
+        'update' => 'battlewheel/{id}',
+        'destroy' => 'battlewheel/{id}'
     ),
     
     'category' => array(

@@ -1,5 +1,15 @@
 <?php
 
+Route::filter('hasAccessInAdmin', function($route, $request, $value) {
+    $id = $route->getParameter('id');
+    if (!is_null($id)) {
+        $object = call_user_func(array("\\".$value, "find"), $id);
+        if (!$object->hasAccessInAdmin()) {
+            return Redirect::action($value."Controller@index");
+        }
+    }
+});
+
 /*
 |--------------------------------------------------------------------------
 | Application & Route Filters
