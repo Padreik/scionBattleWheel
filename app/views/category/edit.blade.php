@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-    {{ BootForm::openHorizontal(Config::get('view.bootformLabelWidth'), Config::get('view.bootformInputWidth'))->action(URL::action('CategoryController@update', array($category_id)))->put() }}
+    {{ BootForm::openHorizontal(Config::get('view.bootformLabelWidth'), Config::get('view.bootformInputWidth'))->action(URL::action('CategoryController@update', array($category->battlewheel_id, $category->id)))->put() }}
         {{ BootForm::bind($category) }}
         {{ Form::token() }}
         {{ BootForm::text(Lang::get('category.name'), 'name') }}

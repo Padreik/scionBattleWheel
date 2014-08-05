@@ -51,7 +51,7 @@
                         @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                             @unless (LaravelLocalization::getCurrentLocale() == $localeCode)
                                 <li>
-                                    <a hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode) }}">{{{ $properties['native'] }}}</a>
+                                    <a hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode) }}">{{ $properties['native'] }}</a>
                                 </li>
                             @endunless
                         @endforeach

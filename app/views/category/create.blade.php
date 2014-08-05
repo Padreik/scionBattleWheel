@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-    {{ BootForm::openHorizontal(Config::get('view.bootformLabelWidth'), Config::get('view.bootformInputWidth'))->action(URL::action('CategoryController@store')) }}
+    {{ BootForm::openHorizontal(Config::get('view.bootformLabelWidth'), Config::get('view.bootformInputWidth'))->action(URL::action('CategoryController@store', array('parentId' => $parentId))) }}
         {{ Form::token() }}
         {{ BootForm::text(Lang::get('category.name'), 'name') }}
         {{ BootForm::submit(Lang::get('category.store')) }}

@@ -8,8 +8,8 @@ class BattleWheelController extends BaseController {
     }
     
     public function show($id) {
-        $battlewheel = \Battlewheel::find($id);
-        return View::make('battleWheel.show')->with('battlewheel', $battlewheel);
+        // Nothing to show for a battle wheel
+        return App::make('CategoryController')->index($id);
     }
     
     public function displayDefault() {

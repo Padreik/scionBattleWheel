@@ -13,16 +13,16 @@
     <?php $csrfToken = csrf_token(); ?>
     <div class="list-group">
         @foreach ($categories as $category)
-            <a href="{{ URL::action('IconController@index', array('id' => $category->id)) }}" class="list-group-item">
+            <a href="{{ URL::action('CategoryController@show', array('parentId' => $parentId, 'id' => $category->id)) }}" class="list-group-item">
                 {{ $category->name }}
             </a>
-            <a href="{{ URL::action('CategoryController@delete', array('id' => $category->id)) }}" class="delete-icon-link" data-method="delete" data-token="{{ $csrfToken }}" data-confirm="{{ Lang::get('category.delete.confirmation') }}">
+            <a href="{{ URL::action('CategoryController@destroy', array('parentId' => $parentId, 'id' => $category->id)) }}" class="delete-icon-link" data-method="delete" data-token="{{ $csrfToken }}" data-confirm="{{ Lang::get('category.delete.confirmation') }}">
                 <span class="glyphicon glyphicon-remove-sign"></span>
             </a>
-            <a href="{{ URL::action('CategoryController@edit', array('id' => $category->id)) }}" class="edit-icon-link"><span class="glyphicon glyphicon-pencil"></span></a>
+            <a href="{{ URL::action('CategoryController@edit', array('parentId' => $parentId, 'id' => $category->id)) }}" class="edit-icon-link"><span class="glyphicon glyphicon-pencil"></span></a>
         @endforeach
     </div>
     <br />
-    {{ HTML::linkAction('CategoryController@create', Lang::get('category.title.create')) }}
+    {{ HTML::linkAction('CategoryController@create', Lang::get('category.title.create'), array('parentId' => $parentId)) }}
     {{ HTML::script('js/laravelRestfulLink.js'); }}
 @stop

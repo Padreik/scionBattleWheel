@@ -22,7 +22,7 @@
                     <img class='iconPreview' src='{{ URL::action('IconController@image', array($icon->category_id, $icon->id)) }}' />
                 </div>
                 <p class='iconText'>{{ $icon->name }}</p>
-                <a href="{{ URL::action('IconController@delete', array($icon->category_id, $icon->id)) }}" class="delete-icon-link" data-method="delete" data-token="{{ $csrfToken }}" data-confirm="{{ Lang::get('icon.delete.confirmation') }}">
+                <a href="{{ URL::action('IconController@destroy', array($icon->category_id, $icon->id)) }}" class="delete-icon-link" data-method="delete" data-token="{{ $csrfToken }}" data-confirm="{{ Lang::get('icon.delete.confirmation') }}">
                     <span class="glyphicon glyphicon-remove-sign img-circle"></span>
                 </a>
             </div>

@@ -2,19 +2,20 @@
 
 class CategoryController extends BaseController {
     
-    public function index() {
-        $categories = Auth::getUser()->categories;
+    public function index($parentId) {
+        $battlewheel = \Battlewheel::find($parentId);
+        $categories = $battlewheel->categories;
         if ($categories->isEmpty()) {
-            return Redirect::action('CategoryController@create');
+            return Redirect::action('CategoryController@create', array($parentId));
         }
-        return View::make('category.index')->with('categories', $categories);
+        return View::make('category.index')->with('categories', $categories)->with('parentId', $parentId);
     }
     
-    public function create() {
-        return View::make('category.create');
+    public function create($parentId) {
+        return View::make('category.create')->with('parentId', $parentId);
     }
     
-    public function store() {
+    public function store($parentId) {
         $validationRules = array(
             'name' => 'required',
         );
@@ -22,23 +23,28 @@ class CategoryController extends BaseController {
         $validator = Validator::make(Input::all(), $validationRules);
         if ($validator->fails()) {
             Input::flash();
-            return Redirect::action('CategoryController@create')->withErrors($validator);
+            return Redirect::action('CategoryController@create', array($parentId))->withErrors($validator);
         }
         else {
             $category = new Category();
             $category->name = Input::get('name');
-            $category->user_id = Auth::getUser()->id;
+            $category->battlewheel_id = $parentId;
             $category->save();
-            return Redirect::action('CategoryController@index');
+            return Redirect::action('CategoryController@index', array($parentId));
         }
     }
     
-    public function edit($category_id) {
-        $category = Category::find($category_id);
-        return View::make('category.edit')->with('category', $category)->with('category_id', $category_id);
+    public function show($parentId, $id) {
+        // Nothing to show for a category
+        return App::make('IconController')->index($id);
     }
     
-    public function update($category_id) {
+    public function edit($parentId, $id) {
+        $category = Category::find($id);
+        return View::make('category.edit')->with('category', $category);
+    }
+    
+    public function update($parentId, $id) {
         $validationRules = array(
             'name' => 'required',
         );
@@ -46,20 +52,20 @@ class CategoryController extends BaseController {
         $validator = Validator::make(Input::all(), $validationRules);
         if ($validator->fails()) {
             Input::flash();
-            return Redirect::action('CategoryController@edit', array($category_id))->withErrors($validator);
+            return Redirect::action('CategoryController@edit', array($parentId, $id))->withErrors($validator);
         }
         else {
-            $category = Category::find($category_id);
+            $category = Category::find($id);
             $category->name = Input::get('name');
             $category->save();
-            return Redirect::action('CategoryController@index');
+            return Redirect::action('CategoryController@index', array($parentId));
         }
     }
     
-    public function delete($category_id) {
-        $category = Category::find($category_id);
+    public function destroy($parentId, $id) {
+        $category = Category::find($id);
         $category->icons()->delete();
         $category->delete();
-        return Redirect::action('CategoryController@index')->with('deleted', '1');;
+        return Redirect::action('CategoryController@index', array($parentId))->with('deleted', '1');;
     }
 }

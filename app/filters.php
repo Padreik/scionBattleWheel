@@ -2,10 +2,34 @@
 
 Route::filter('hasAccessInAdmin', function($route, $request, $value) {
     $id = $route->getParameter('id');
+    $parentId = $route->getParameter('parent_id');
     if (!is_null($id)) {
         $object = call_user_func(array("\\".$value, "find"), $id);
-        if (!$object->hasAccessInAdmin()) {
-            return Redirect::action($value."Controller@index");
+        if (is_a($object, 'AccessibleInAdmin') && !$object->hasAccessInAdmin()) {
+            if (!is_null($parentId)) {
+                return Redirect::action($value."Controller@index", array('parent_id' => $parentId));
+            }
+            else {
+                return Redirect::action($value."Controller@index");
+            }
+        }
+    }
+    elseif (!is_null($parentId)) {
+        $parentClass = call_user_func(array("\\".$value, "getParentClass"));
+        $parent = call_user_func(array("\\".$parentClass, "find"), $parentId);
+        if (is_a($parent, 'AccessibleInAdmin') && !$parent->hasAccessInAdmin()) {
+            return Redirect::back();
+        }
+    }
+});
+
+Route::filter('hasValidParent', function($route, $request, $value) {
+    $id = $route->getParameter('id');
+    $parentId = $route->getParameter('parent_id');
+    if (!is_null($id) && !is_null($parentId)) {
+        $object = call_user_func(array("\\".$value, "find"), $id);
+        if (is_a($object, 'HaveParent') && !$object->isParentIdValid()) {
+            return Redirect::action($value."Controller@index", array('parent_id' => $parentId));
         }
     }
 });
@@ -45,7 +69,7 @@ App::after(function($request, $response)
 
 Route::filter('auth', function()
 {
-	if (Auth::guest()) return Redirect::guest('login');
+	if (Auth::guest()) return Redirect::guest('/');
 });
 
 
